@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import os
+
+access_tk = os.getenv("ACCESS_TOKEN")  # YOUR ACCESS TOKEN
 
 app=FastAPI()
 # Enable CORS
@@ -18,7 +21,7 @@ def autocomplete(q:str):
     url="https://atlas.mapmyindia.com/api/places/search/json"
 
     payload={
-        "access_token":"YOUR_ACCESS_KEY",
+        "access_token":access_tk,
         "region":"IND",
         "query":q,
         "location":"9.925557164854263, 76.35675339482806"
